@@ -8,7 +8,7 @@ app.secret_key = 'your_secret_key'  # Required for flashing messages
 
 @app.route('/')
 def form():
-    return render_template('form.html')
+    return render_template('index.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
