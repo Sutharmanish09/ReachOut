@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Creative Contact Form</title>
+    <title>Dark Creative Contact Form with Truck Animation</title>
     <style>
         body {
             background: #121212;
@@ -91,6 +91,15 @@
             pointer-events: none;
         }
         
+        .helper-text {
+            display: block;
+            margin-top: 5px;
+            margin-left: 5px;
+            font-size: 12px;
+            color: #bb86fc;
+            opacity: 0.7;
+        }
+        
         input, textarea {
             width: 100%;
             padding: 15px;
@@ -168,26 +177,216 @@
             left: 100%;
         }
         
+        /* Animation Container */
+        .animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        /* Road */
+        .road {
+            position: absolute;
+            bottom: 20%;
+            width: 100%;
+            height: 40px;
+            background: #333;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+        
+        .road::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: repeating-linear-gradient(90deg, #ffff00, #ffff00 40px, transparent 40px, transparent 80px);
+            margin-top: -2px;
+            animation: moveRoad 0.5s linear infinite;
+        }
+        
+        @keyframes moveRoad {
+            0% { background-position: 0 0; }
+            100% { background-position: -80px 0; }
+        }
+        
+        /* Truck */
+        .truck {
+            position: absolute;
+            width: 180px;
+            height: 100px;
+            bottom: calc(20% + 40px);
+            left: -200px;
+            animation: truckDrive 4s forwards;
+        }
+        
+        .truck-body {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            bottom: 10px;
+            right: 0;
+            background: linear-gradient(45deg, #9c27b0, #6a1b9a);
+            border-radius: 8px 0 0 8px;
+            box-shadow: 0 0 15px rgba(156, 39, 176, 0.7);
+        }
+        
+        .truck-cabin {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            bottom: 10px;
+            left: 0;
+            background: linear-gradient(45deg, #7b1fa2, #4a148c);
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .truck-window {
+            position: absolute;
+            width: 20px;
+            height: 15px;
+            top: 5px;
+            left: 10px;
+            background: #b388ff;
+            border-radius: 3px;
+            border: 2px solid #4a148c;
+        }
+        
+        .wheel {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            bottom: 0;
+            background: #333;
+            border-radius: 50%;
+            border: 3px solid #555;
+            animation: wheelRotate 0.5s linear infinite;
+        }
+        
+        .wheel-1 {
+            left: 15px;
+        }
+        
+        .wheel-2 {
+            right: 20px;
+        }
+        
+        .wheel-3 {
+            right: 60px;
+        }
+        
+        @keyframes wheelRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Message */
         .message {
-            margin-top: 20px;
+            position: absolute;
             padding: 15px;
-            border-radius: 8px;
+            background: #bb86fc;
+            color: #121212;
+            font-weight: bold;
+            border-radius: 10px;
+            max-width: 200px;
+            text-align: center;
+            opacity: 0;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(187, 134, 252, 0.8);
+            animation: messageAppear 2s 2.5s forwards;
+        }
+        
+        .email-recipients {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            width: 80%;
+            opacity: 0;
+            animation: messageAppear 2s 3s forwards;
+        }
+        
+        .email-badge {
+            background: rgba(187, 134, 252, 0.2);
+            border: 1px solid #bb86fc;
+            color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+            margin: 3px;
+        }
+        
+        @keyframes truckDrive {
+            0% { left: -200px; }
+            60% { left: 50%; }
+            80% { left: 50%; }
+            100% { left: calc(100% + 200px); }
+        }
+        
+        @keyframes messageAppear {
+            0% { opacity: 0; transform: translate(-50%, -30%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        /* Success message that replaces the form */
+        .success-message {
             text-align: center;
             display: none;
         }
         
-        .success {
-            background: rgba(46, 125, 50, 0.2);
-            border: 1px solid #2e7d32;
-            color: #81c784;
-            display: block;
+        .success-message h3 {
+            color: #bb86fc;
+            font-size: 24px;
+            margin-bottom: 15px;
         }
         
-        .error {
-            background: rgba(183, 28, 28, 0.2);
-            border: 1px solid #b71c1c;
-            color: #e57373;
-            display: block;
+        .success-message p {
+            color: #9c9c9c;
+            margin-bottom: 25px;
+        }
+        
+        .success-icon {
+            font-size: 60px;
+            color: #bb86fc;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .new-message-btn {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #9c27b0, #6a1b9a);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .new-message-btn:hover {
+            background: linear-gradient(45deg, #6a1b9a, #4a148c);
         }
         
         @media (max-width: 500px) {
@@ -199,32 +398,125 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Get In Touch</h2>
-        <!-- Added action and method attributes to connect with Flask backend -->
-        <form action="/submit" method="POST">
-            <div class="input-group">
-                <!-- Added name attribute which is required for Flask to get the data -->
-                <input type="text" id="name" name="name" placeholder=" " required>
-                <label for="name">Name</label>
-            </div>
-            
-            <div class="input-group">
-                <!-- Added name attribute which is required for Flask to get the data -->
-                <input type="email" id="email" name="email" placeholder=" " required>
-                <label for="email">Your Email</label>
-            </div>
-            
-            <div class="input-group">
-                <!-- Added name attribute which is required for Flask to get the data -->
-                <textarea id="message" name="message" placeholder=" " required></textarea>
-                <label for="message">Message</label>
-            </div>
-            
-            <button type="submit">Send Message</button>
-        </form>
+        <div id="contactForm">
+            <h2>Get In Touch</h2>
+            <form id="messageForm">
+                <div class="input-group">
+                    <input type="text" id="name" placeholder=" " required>
+                    <label for="name">Name</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="email" id="email" placeholder=" " required>
+                    <label for="email">Your Email</label>
+                </div>
+                
+                <div class="input-group">
+                    <textarea id="message" placeholder=" " required></textarea>
+                    <label for="message">Message</label>
+                </div>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
         
-        <!-- Optional: Add message container for feedback -->
-        <div id="message-container" class="message"></div>
+        <div id="successMessage" class="success-message">
+            <div class="success-icon">✓</div>
+            <h3>Message Delivered!</h3>
+            <p>Your message has been successfully delivered.</p>
+            <button class="new-message-btn" id="newMessageBtn">Send Another Message</button>
+        </div>
     </div>
+    
+    <div class="animation-container" id="animationContainer">
+        <div class="road"></div>
+        <div class="truck">
+            <div class="truck-cabin">
+                <div class="truck-window"></div>
+            </div>
+            <div class="truck-body"></div>
+            <div class="wheel wheel-1"></div>
+            <div class="wheel wheel-2"></div>
+            <div class="wheel wheel-3"></div>
+        </div>
+        <div class="message" id="deliveryMessage">Message Delivered!</div>
+        <div class="email-recipients" id="emailList"></div>
+    </div>
+    
+    <script>
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show animation
+            const animationContainer = document.getElementById('animationContainer');
+            animationContainer.style.display = 'flex';
+            
+            // Get message content for personalization
+            const messageContent = document.getElementById('message').value;
+            const nameContent = document.getElementById('name').value;
+            
+            // Get email recipients and display them
+            const emails = document.getElementById('email').value.split(',').map(email => email.trim()).filter(email => email !== '');
+            const emailListDiv = document.getElementById('emailList');
+            emailListDiv.innerHTML = '';
+            
+            // Create email badges
+            emails.forEach(email => {
+                const badge = document.createElement('span');
+                badge.className = 'email-badge';
+                badge.textContent = email;
+                emailListDiv.appendChild(badge);
+            });
+            
+            // Update truck count if multiple recipients
+            if (emails.length > 1) {
+                // Create multiple trucks (clones) with slight delay
+                const truck = document.querySelector('.truck');
+                const truckOffsetY = -20;
+                
+                for (let i = 1; i < Math.min(emails.length, 5); i++) {
+                    const truckClone = truck.cloneNode(true);
+                    truckClone.style.bottom = `calc(20% + 40px + ${truckOffsetY * i}px)`;
+                    truckClone.style.animationDelay = `${i * 0.3}s`;
+                    truck.parentNode.appendChild(truckClone);
+                }
+            }
+            
+            // Personalize delivery message
+            const deliveryMessage = document.getElementById('deliveryMessage');
+            if (emails.length > 1) {
+                deliveryMessage.textContent = `Delivering to ${emails.length} recipients!`;
+            } else if (messageContent.length > 30) {
+                deliveryMessage.textContent = "Message from " + nameContent + " is being delivered!";
+            } else {
+                deliveryMessage.textContent = "\"" + messageContent + "\" is being delivered!";
+            }
+            
+            // After animation completes
+            setTimeout(function() {
+                // Hide animation
+                animationContainer.style.display = 'none';
+                
+                // Show success message
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Log emails that would receive the message
+            const emails = document.getElementById('email').value.split(',').map(email => email.trim());
+            console.log("Message would be sent to: ", emails);
+            
+            // In a real application, here you would make an API call to your backend
+            // Example:
+            // sendToMultipleRecipients(emails, nameContent, messageContent);
+        }, 5000);
+        });
+        
+        // Reset form for new message
+        document.getElementById('newMessageBtn').addEventListener('click', function() {
+            document.getElementById('messageForm').reset();
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('contactForm').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
