@@ -18,18 +18,18 @@
             overflow: hidden;
             position: relative;
         }
-        
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(128, 0, 128, 0.2), rgba(0, 0, 0, 0));
-            z-index: -1;
-        }
-        
+
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 50% 50%, rgba(128, 0, 128, 0.2), rgba(0, 0, 0, 0));
+                z-index: -1;
+            }
+
         .form-container {
             background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
             border-radius: 15px;
@@ -41,34 +41,30 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(128, 0, 128, 0.1),
-                rgba(75, 0, 130, 0.1),
-                rgba(0, 0, 255, 0.1)
-            );
-            transform: rotate(45deg);
-            z-index: -1;
-            animation: shimmer 8s infinite linear;
-        }
-        
+
+            .form-container::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient( to bottom right, rgba(128, 0, 128, 0.1), rgba(75, 0, 130, 0.1), rgba(0, 0, 255, 0.1) );
+                transform: rotate(45deg);
+                z-index: -1;
+                animation: shimmer 8s infinite linear;
+            }
+
         @keyframes shimmer {
             0% {
                 transform: translateY(-50%) rotate(0deg);
             }
+
             100% {
                 transform: translateY(-50%) rotate(360deg);
             }
         }
-        
+
         h2 {
             color: #bb86fc;
             font-size: 28px;
@@ -76,12 +72,12 @@
             text-align: center;
             text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
         }
-        
+
         .input-group {
             margin-bottom: 25px;
             position: relative;
         }
-        
+
         label {
             position: absolute;
             left: 15px;
@@ -90,7 +86,7 @@
             transition: all 0.3s ease;
             pointer-events: none;
         }
-        
+
         .helper-text {
             display: block;
             margin-top: 5px;
@@ -99,7 +95,7 @@
             color: #bb86fc;
             opacity: 0.7;
         }
-        
+
         input, textarea {
             width: 100%;
             padding: 15px;
@@ -111,30 +107,30 @@
             transition: all 0.3s ease;
             box-sizing: border-box;
         }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #bb86fc;
-            box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.3);
-        }
-        
-        input:focus ~ label, 
-        input:not(:placeholder-shown) ~ label,
-        textarea:focus ~ label,
-        textarea:not(:placeholder-shown) ~ label {
-            top: -10px;
-            left: 10px;
-            font-size: 12px;
-            color: #bb86fc;
-            background: #1a1a1a;
-            padding: 0 5px;
-        }
-        
+
+            input:focus, textarea:focus {
+                outline: none;
+                border-color: #bb86fc;
+                box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.3);
+            }
+
+                input:focus ~ label,
+                input:not(:placeholder-shown) ~ label,
+                textarea:focus ~ label,
+                textarea:not(:placeholder-shown) ~ label {
+                    top: -10px;
+                    left: 10px;
+                    font-size: 12px;
+                    color: #bb86fc;
+                    background: #1a1a1a;
+                    padding: 0 5px;
+                }
+
         textarea {
             min-height: 120px;
             resize: vertical;
         }
-        
+
         button {
             width: 100%;
             padding: 15px;
@@ -151,32 +147,32 @@
             position: relative;
             overflow: hidden;
         }
-        
-        button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            transition: 0.5s;
-        }
-        
-        button:hover {
-            background: linear-gradient(45deg, #6a1b9a, #4a148c);
-            box-shadow: 0 0 15px rgba(187, 134, 252, 0.5);
-        }
-        
-        button:hover::before {
-            left: 100%;
-        }
-        
+
+            button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.2), transparent );
+                transition: 0.5s;
+            }
+
+            button:hover {
+                background: linear-gradient(45deg, #6a1b9a, #4a148c);
+                box-shadow: 0 0 15px rgba(187, 134, 252, 0.5);
+            }
+
+                button:hover::before {
+                    left: 100%;
+                }
+
+            button:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+
         /* Animation Container */
         .animation-container {
             position: fixed;
@@ -191,7 +187,7 @@
             z-index: 1000;
             overflow: hidden;
         }
-        
+
         /* Road */
         .road {
             position: absolute;
@@ -201,24 +197,29 @@
             background: #333;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
         }
-        
-        .road::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: repeating-linear-gradient(90deg, #ffff00, #ffff00 40px, transparent 40px, transparent 80px);
-            margin-top: -2px;
-            animation: moveRoad 0.5s linear infinite;
-        }
-        
+
+            .road::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: repeating-linear-gradient(90deg, #ffff00, #ffff00 40px, transparent 40px, transparent 80px);
+                margin-top: -2px;
+                animation: moveRoad 0.5s linear infinite;
+            }
+
         @keyframes moveRoad {
-            0% { background-position: 0 0; }
-            100% { background-position: -80px 0; }
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: -80px 0;
+            }
         }
-        
+
         /* Truck */
         .truck {
             position: absolute;
@@ -228,7 +229,7 @@
             left: -200px;
             animation: truckDrive 4s forwards;
         }
-        
+
         .truck-body {
             position: absolute;
             width: 100px;
@@ -239,7 +240,7 @@
             border-radius: 8px 0 0 8px;
             box-shadow: 0 0 15px rgba(156, 39, 176, 0.7);
         }
-        
+
         .truck-cabin {
             position: absolute;
             width: 40px;
@@ -249,7 +250,7 @@
             background: linear-gradient(45deg, #7b1fa2, #4a148c);
             border-radius: 5px 0 0 5px;
         }
-        
+
         .truck-window {
             position: absolute;
             width: 20px;
@@ -260,7 +261,7 @@
             border-radius: 3px;
             border: 2px solid #4a148c;
         }
-        
+
         .wheel {
             position: absolute;
             width: 20px;
@@ -271,24 +272,29 @@
             border: 3px solid #555;
             animation: wheelRotate 0.5s linear infinite;
         }
-        
+
         .wheel-1 {
             left: 15px;
         }
-        
+
         .wheel-2 {
             right: 20px;
         }
-        
+
         .wheel-3 {
             right: 60px;
         }
-        
+
         @keyframes wheelRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         /* Message */
         .message {
             position: absolute;
@@ -306,7 +312,7 @@
             box-shadow: 0 0 20px rgba(187, 134, 252, 0.8);
             animation: messageAppear 2s 2.5s forwards;
         }
-        
+
         .email-recipients {
             position: absolute;
             top: 50%;
@@ -320,7 +326,7 @@
             opacity: 0;
             animation: messageAppear 2s 3s forwards;
         }
-        
+
         .email-badge {
             background: rgba(187, 134, 252, 0.2);
             border: 1px solid #bb86fc;
@@ -331,49 +337,88 @@
             display: inline-block;
             margin: 3px;
         }
-        
+
         @keyframes truckDrive {
-            0% { left: -200px; }
-            60% { left: 50%; }
-            80% { left: 50%; }
-            100% { left: calc(100% + 200px); }
+            0% {
+                left: -200px;
+            }
+
+            60% {
+                left: 50%;
+            }
+
+            80% {
+                left: 50%;
+            }
+
+            100% {
+                left: calc(100% + 200px);
+            }
         }
-        
+
         @keyframes messageAppear {
-            0% { opacity: 0; transform: translate(-50%, -30%); }
-            100% { opacity: 1; transform: translate(-50%, -50%); }
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -30%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
         }
-        
-        /* Success message that replaces the form */
-        .success-message {
+
+        /* Success/Error message that replaces the form */
+        .success-message, .error-message {
             text-align: center;
             display: none;
         }
-        
-        .success-message h3 {
-            color: #bb86fc;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        
-        .success-message p {
-            color: #9c9c9c;
-            margin-bottom: 25px;
-        }
-        
+
+            .success-message h3 {
+                color: #bb86fc;
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .error-message h3 {
+                color: #ff6b6b;
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .success-message p, .error-message p {
+                color: #9c9c9c;
+                margin-bottom: 25px;
+            }
+
         .success-icon {
             font-size: 60px;
             color: #bb86fc;
             margin-bottom: 20px;
             animation: pulse 2s infinite;
         }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+
+        .error-icon {
+            font-size: 60px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
         }
-        
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .new-message-btn {
             padding: 10px 20px;
             background: linear-gradient(45deg, #9c27b0, #6a1b9a);
@@ -384,11 +429,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
-        .new-message-btn:hover {
-            background: linear-gradient(45deg, #6a1b9a, #4a148c);
-        }
-        
+
+            .new-message-btn:hover {
+                background: linear-gradient(45deg, #6a1b9a, #4a148c);
+            }
+
         @media (max-width: 500px) {
             .form-container {
                 padding: 30px 20px;
@@ -400,34 +445,41 @@
     <div class="form-container">
         <div id="contactForm">
             <h2>Get In Touch</h2>
-            <form id="messageForm">
+            <form id="messageForm" action="/submit" method="POST">
                 <div class="input-group">
-                    <input type="text" id="name" placeholder=" " required>
+                    <input type="text" id="name" name="name" placeholder=" " required>
                     <label for="name">Name</label>
                 </div>
-                
+
                 <div class="input-group">
-                    <input type="email" id="email" placeholder=" " required>
+                    <input type="email" id="email" name="email" placeholder=" " required>
                     <label for="email">Your Email</label>
                 </div>
-                
+
                 <div class="input-group">
-                    <textarea id="message" placeholder=" " required></textarea>
+                    <textarea id="message" name="message" placeholder=" " required></textarea>
                     <label for="message">Message</label>
                 </div>
-                
-                <button type="submit">Send Message</button>
+
+                <button type="submit" id="submitBtn">Send Message</button>
             </form>
         </div>
-        
+
         <div id="successMessage" class="success-message">
             <div class="success-icon">✓</div>
             <h3>Message Delivered!</h3>
-            <p>Your message has been successfully delivered.</p>
+            <p>Your message has been successfully sent via email.</p>
             <button class="new-message-btn" id="newMessageBtn">Send Another Message</button>
         </div>
+
+        <div id="errorMessage" class="error-message">
+            <div class="error-icon">✗</div>
+            <h3>Delivery Failed</h3>
+            <p id="errorText">There was an error sending your message. Please try again.</p>
+            <button class="new-message-btn" id="retryBtn">Try Again</button>
+        </div>
     </div>
-    
+
     <div class="animation-container" id="animationContainer">
         <div class="road"></div>
         <div class="truck">
@@ -439,84 +491,92 @@
             <div class="wheel wheel-2"></div>
             <div class="wheel wheel-3"></div>
         </div>
-        <div class="message" id="deliveryMessage">Message Delivered!</div>
+        <div class="message" id="deliveryMessage">Sending your message...</div>
         <div class="email-recipients" id="emailList"></div>
     </div>
-    
+
     <script>
-        document.getElementById('messageForm').addEventListener('submit', function(e) {
+        document.getElementById('messageForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
+            // Disable submit button to prevent double submission
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
             // Show animation
             const animationContainer = document.getElementById('animationContainer');
             animationContainer.style.display = 'flex';
-            
-            // Get message content for personalization
-            const messageContent = document.getElementById('message').value;
-            const nameContent = document.getElementById('name').value;
-            
-            // Get email recipients and display them
-            const emails = document.getElementById('email').value.split(',').map(email => email.trim()).filter(email => email !== '');
+
+            // Get form data
+            const formData = new FormData(this);
+            const nameContent = formData.get('name');
+            const emailContent = formData.get('email');
+            const messageContent = formData.get('message');
+
+            // Update delivery message
+            const deliveryMessage = document.getElementById('deliveryMessage');
+            deliveryMessage.textContent = `Sending message from ${nameContent}...`;
+
+            // Display email recipient
             const emailListDiv = document.getElementById('emailList');
             emailListDiv.innerHTML = '';
-            
-            // Create email badges
-            emails.forEach(email => {
-                const badge = document.createElement('span');
-                badge.className = 'email-badge';
-                badge.textContent = email;
-                emailListDiv.appendChild(badge);
-            });
-            
-            // Update truck count if multiple recipients
-            if (emails.length > 1) {
-                // Create multiple trucks (clones) with slight delay
-                const truck = document.querySelector('.truck');
-                const truckOffsetY = -20;
-                
-                for (let i = 1; i < Math.min(emails.length, 5); i++) {
-                    const truckClone = truck.cloneNode(true);
-                    truckClone.style.bottom = `calc(20% + 40px + ${truckOffsetY * i}px)`;
-                    truckClone.style.animationDelay = `${i * 0.3}s`;
-                    truck.parentNode.appendChild(truckClone);
-                }
-            }
-            
-            // Personalize delivery message
-            const deliveryMessage = document.getElementById('deliveryMessage');
-            if (emails.length > 1) {
-                deliveryMessage.textContent = `Delivering to ${emails.length} recipients!`;
-            } else if (messageContent.length > 30) {
-                deliveryMessage.textContent = "Message from " + nameContent + " is being delivered!";
-            } else {
-                deliveryMessage.textContent = "\"" + messageContent + "\" is being delivered!";
-            }
-            
-            // After animation completes
-            setTimeout(function() {
-                // Hide animation
-                animationContainer.style.display = 'none';
-                
-                // Show success message
-            document.getElementById('contactForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Log emails that would receive the message
-            const emails = document.getElementById('email').value.split(',').map(email => email.trim());
-            console.log("Message would be sent to: ", emails);
-            
-            // In a real application, here you would make an API call to your backend
-            // Example:
-            // sendToMultipleRecipients(emails, nameContent, messageContent);
-        }, 5000);
+            const badge = document.createElement('span');
+            badge.className = 'email-badge';
+            badge.textContent = emailContent;
+            emailListDiv.appendChild(badge);
+
+            // Send data to Flask backend
+            fetch('/submit', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .then(data => {
+                    // Animation continues for a bit, then show success
+                    setTimeout(() => {
+                        animationContainer.style.display = 'none';
+                        document.getElementById('contactForm').style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'block';
+                    }, 4000);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    setTimeout(() => {
+                        animationContainer.style.display = 'none';
+                        document.getElementById('contactForm').style.display = 'none';
+                        document.getElementById('errorMessage').style.display = 'block';
+                        document.getElementById('errorText').textContent = 'Failed to send email. Please check your connection and try again.';
+                    }, 4000);
+                })
+                .finally(() => {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                });
         });
-        
+
         // Reset form for new message
-        document.getElementById('newMessageBtn').addEventListener('click', function() {
+        document.getElementById('newMessageBtn').addEventListener('click', function () {
+            resetForm();
+        });
+
+        document.getElementById('retryBtn').addEventListener('click', function () {
+            resetForm();
+        });
+
+        function resetForm() {
             document.getElementById('messageForm').reset();
             document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
             document.getElementById('contactForm').style.display = 'block';
-        });
+        }
     </script>
 </body>
 </html>
