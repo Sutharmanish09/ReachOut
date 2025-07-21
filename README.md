@@ -91,7 +91,7 @@ Access the form at http://127.0.0.1:5000/
 
 ---
 
-### 🔗 Integration
+### 🔗 Integrations
 
 To use ReachOut in your existing website:
 
